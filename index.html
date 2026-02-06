@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yes or No</title>
+
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    img {
+      width: 300px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+    }
+
+    .buttons {
+      position: relative;
+      width: 320px;
+      height: 120px;
+    }
+
+    button {
+      position: absolute;
+      padding: 12px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: left 0.15s ease, top 0.15s ease, transform 0.15s ease;
+    }
+
+    .yes {
+      left: 20px;
+      top: 40px;
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .no {
+      right: 20px;
+      top: 40px;
+      background-color: #F44336;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="image.jpg" alt="Do you agree?">
+
+  <div class="buttons" id="buttonBox">
+    <button class="yes" id="yesBtn">Yes</button>
+    <button class="no">No</button>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const box = document.getElementById("buttonBox");
+
+    let scale = 1;
+
+    yesBtn.addEventListener("mouseenter", () => {
+      const maxX = box.clientWidth - yesBtn.offsetWidth;
+      const maxY = box.clientHeight - yesBtn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      yesBtn.style.left = x + "px";
+      yesBtn.style.top = y + "px";
+
+      if (scale < 1.6) {
+        scale += 0.1;
+        yesBtn.style.transform = `scale(${scale})`;
+      }
+    });
+
+    
+    yesBtn.addEventListener("click", () => {
+      alert("Thank you!!! I am very excited to be your valentine, pretty girl.");
+    });
+  </script>
+
+</body>
+</html>
